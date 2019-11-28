@@ -10,6 +10,7 @@ $('#upload-input').on('change', function () {
         // AJAX request
         var formData = new FormData();
         let html = "<thead><th>FileName</th><th>DateTime</th><th>Size</th><th>Report</th></thead>";
+        message = document.getElementById('message');
 
         thead = document.createElement('thead');
         th1 = document.createElement('th');
@@ -27,6 +28,7 @@ $('#upload-input').on('change', function () {
         tbl.appendChild(thead);
 
         _.each(files, function (file) {
+            console.log(file.name);
             formData.append('uploads[]', file, file.name);
             tr = document.createElement('tr');
             const td1 = document.createElement('td');
@@ -68,11 +70,15 @@ $('#upload-input').on('change', function () {
                     percentComplete = parseInt(percentComplete * 100);
                     $('.progress-bar').text(percentComplete + '%');
                     $('.progress-bar').width(percentComplete + '%');
+                    message.textContent = 'uploading...';
                     if (percentComplete === 100) {
                         $('.progress-bar').html('Done');
                     }
                 }
             }, false);
+            xhr.upload.addEventListener('loadend', function (evt) {
+                message.textContent = 'Successfully uploaded';
+            });
             return xhr;
         }
     });

@@ -37,3 +37,6 @@ table{
     width: 450px;
   }
 }
+#message {
+  margin-top: 20px;
+}

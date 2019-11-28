@@ -10,7 +10,8 @@
   "author": "Juhil Somaiya",
   "license": "ISC",
   "dependencies": {
-    "formidable" : "^1.2.1",
-    "express" : "^4.17.1"
+    "express": "^4.17.1",
+    "formidable": "^1.2.1",
+    "mongoose": "^5.7.12"
   }
 }
